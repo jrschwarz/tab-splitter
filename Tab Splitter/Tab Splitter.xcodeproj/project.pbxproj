@@ -20,7 +20,6 @@
 		34795767260D755900F239A6 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795766260D755900F239A6 /* Tab.swift */; };
 		3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479576B260D78AB00F239A6 /* TabItemCell.swift */; };
 		34795777260D8DAC00F239A6 /* AddTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795776260D8DAC00F239A6 /* AddTabViewController.swift */; };
-		34E1D0CD26121C7C0051AD23 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E1D0CC26121C7C0051AD23 /* SelfSizedTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,6 @@
 		34795766260D755900F239A6 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		3479576B260D78AB00F239A6 /* TabItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCell.swift; sourceTree = "<group>"; };
 		34795776260D8DAC00F239A6 /* AddTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTabViewController.swift; sourceTree = "<group>"; };
-		34E1D0CC26121C7C0051AD23 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +129,6 @@
 				34795766260D755900F239A6 /* Tab.swift */,
 				3479576B260D78AB00F239A6 /* TabItemCell.swift */,
 				34795776260D8DAC00F239A6 /* AddTabViewController.swift */,
-				34E1D0CC26121C7C0051AD23 /* SelfSizedTableView.swift */,
 			);
 			path = "Tab Splitter";
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 			files = (
 				34795777260D8DAC00F239A6 /* AddTabViewController.swift in Sources */,
 				34795735260D6EEA00F239A6 /* TabsViewController.swift in Sources */,
-				34E1D0CD26121C7C0051AD23 /* SelfSizedTableView.swift in Sources */,
 				34795731260D6EEA00F239A6 /* AppDelegate.swift in Sources */,
 				34795733260D6EEA00F239A6 /* SceneDelegate.swift in Sources */,
 				34795767260D755900F239A6 /* Tab.swift in Sources */,

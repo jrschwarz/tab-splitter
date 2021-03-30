@@ -25,7 +25,7 @@ class TableInputsView: NSObject, UITableViewDelegate, UITableViewDataSource {
     init(superView: UIView?, tableView: UITableView) {
         self.superView = superView
         self.tableView = tableView
-
+        
         let initialHeight = CGFloat(items.count) * tableRowHeight
         heightConstraint = tableView.heightAnchor.constraint(equalToConstant: initialHeight)
         
@@ -35,6 +35,9 @@ class TableInputsView: NSObject, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.isEditing = true
         tableView.rowHeight = tableRowHeight
+        tableView.estimatedRowHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.estimatedSectionFooterHeight = 0
         tableView.isScrollEnabled = false
         heightConstraint.isActive = true
     }
@@ -66,25 +69,29 @@ class TableInputsView: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            items.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            updateHeightAnimation(duration: 0)
+            UIView.animate(withDuration: 0.23, delay: 0, options: .curveEaseOut) {
+                self.items.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.updateHeight()
+            }
         }
         
         if editingStyle == .insert {
             let insertAt = items.count - 1
             let itemNum = items.count
-            items.insert("Person \(itemNum)", at: insertAt)
-            updateHeightAnimation(duration: 0.3)
-            tableView.insertRows(at: [IndexPath(row: insertAt, section: 0)], with: .bottom)
+            UIView.animate(withDuration: 0.3) {
+                self.items.insert("Person \(itemNum)", at: insertAt)
+                self.updateHeight()
+                self.tableView.insertRows(at: [IndexPath(row: insertAt, section: 0)], with: .bottom)
+            }
+            
         }
     }
     
-    func updateHeightAnimation(duration: TimeInterval = 0.3) {
+    func updateHeight() {
         let newHeight = CGFloat(items.count) * tableView.rowHeight
-        UIView.animate(withDuration: duration, animations: {
-            self.heightConstraint.constant = newHeight
-            self.superView?.layoutIfNeeded()
-        })
+        self.heightConstraint.constant = newHeight
+        self.superView?.layoutIfNeeded()
+        
     }
 }

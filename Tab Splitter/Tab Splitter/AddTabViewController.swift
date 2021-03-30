@@ -9,7 +9,7 @@ import UIKit
 
 class AddTabViewController: UIViewController {
     
-    @IBOutlet var peopleInputsTableView: SelfSizedTableView!
+    @IBOutlet var peopleInputsTableView: UITableView!
     
     var name: String = ""
     var peopleInputsTable: TableInputsView!
