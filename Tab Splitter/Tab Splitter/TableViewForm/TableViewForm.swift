@@ -1,0 +1,131 @@
+//
+//  TableViewForm.swift
+//  Tab Splitter
+//
+//  Created by Joseph Schwarz on 3/30/21.
+//
+
+import UIKit
+
+class TableViewForm: NSObject {
+    
+    var tableView: UITableView
+    
+    private var sections: [TableViewFormSection] = []
+    
+    private var nextResponderIndexPath: IndexPath?
+    
+    init(tableView: UITableView) {
+        self.tableView = tableView
+        super.init()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.isEditing = true
+    }
+    
+    func addSection(section: TableViewFormSection) {
+        sections.append(section)
+    }
+    
+    func addSections(sections: [TableViewFormSection]) {
+        sections.forEach { addSection(section: $0) }
+    }
+    
+    func removeSection(section: TableViewFormSection) {
+        sections.removeAll { $0.name == section.name }
+    }
+    
+    func getSection(name: String) -> TableViewFormSection? {
+        return sections.first { $0.name == name } ?? nil
+    }
+}
+
+extension TableViewForm: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = sections[indexPath.section]
+        let row = indexPath.row
+        
+        if let staticSection = section as? TableViewFormSectionStatic {
+            let field = staticSection.fields[row]
+            
+            if let inputField = field as? TableViewFormInput {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TableInputCell") as! TableInputCell
+                cell.input.placeholder = inputField.placeholder
+                cell.input.text = inputField.value
+                if nextResponderIndexPath == indexPath { cell.input.becomeFirstResponder() }
+                return cell
+            }
+        }
+        
+        if let arraySection = section as? TableViewFormSectionArray {
+            if row == arraySection.values.count {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TableAddInputCell")!
+                cell.textLabel?.text = arraySection.label
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TableInputCell") as! TableInputCell
+                cell.input.text = arraySection.values[row]
+                if nextResponderIndexPath == indexPath { cell.input.becomeFirstResponder() }
+                return cell
+            }
+        }
+        
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let staticSection = sections[section] as? TableViewFormSectionStatic {
+            return staticSection.fields.count
+        }
+        
+        if let arraySection = sections[section] as? TableViewFormSectionArray {
+            return arraySection.values.count + 1
+        }
+        
+        return 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+}
+
+extension TableViewForm: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        let section = sections[indexPath.section]
+        return section is TableViewFormSectionArray
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        let section = sections[indexPath.section]
+        return section is TableViewFormSectionArray
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if let arraySection = sections[indexPath.section] as? TableViewFormSectionArray {
+            if indexPath.row == arraySection.values.count { return .insert }
+            else { return .delete }
+        }
+        
+        return .none
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if var arraySection = sections[indexPath.section] as? TableViewFormSectionArray {
+            if editingStyle == .delete {
+                arraySection.values.remove(at: indexPath.row)
+                sections[indexPath.section] = arraySection
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            
+            if editingStyle == .insert {
+                arraySection.values.append("")
+                sections[indexPath.section] = arraySection
+                let newIndexPath = IndexPath(row: arraySection.values.count - 1, section: indexPath.section)
+                nextResponderIndexPath = newIndexPath
+                tableView.insertRows(at: [newIndexPath], with: .bottom)
+            }
+        }
+    }
+}

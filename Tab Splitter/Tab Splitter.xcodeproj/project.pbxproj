@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3434C57C2611554F00BA96BF /* TableInputsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434C57B2611554F00BA96BF /* TableInputsView.swift */; };
 		3434C58A2611583E00BA96BF /* TableInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434C5892611583E00BA96BF /* TableInputCell.swift */; };
 		34795731260D6EEA00F239A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795730260D6EEA00F239A6 /* AppDelegate.swift */; };
 		34795733260D6EEA00F239A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795732260D6EEA00F239A6 /* SceneDelegate.swift */; };
@@ -20,6 +19,9 @@
 		34795767260D755900F239A6 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795766260D755900F239A6 /* Tab.swift */; };
 		3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479576B260D78AB00F239A6 /* TabItemCell.swift */; };
 		34795777260D8DAC00F239A6 /* AddTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795776260D8DAC00F239A6 /* AddTabViewController.swift */; };
+		34E5ED0A26137D8E00225179 /* TableViewForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5ED0926137D8E00225179 /* TableViewForm.swift */; };
+		34E5ED12261380B700225179 /* TableViewFormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5ED11261380B700225179 /* TableViewFormSection.swift */; };
+		34E5ED1C2613865100225179 /* TableViewFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5ED1B2613865100225179 /* TableViewFormField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3434C57B2611554F00BA96BF /* TableInputsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInputsView.swift; sourceTree = "<group>"; };
 		3434C5892611583E00BA96BF /* TableInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInputCell.swift; sourceTree = "<group>"; };
 		3479572D260D6EEA00F239A6 /* Tab Splitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tab Splitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34795730260D6EEA00F239A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +60,9 @@
 		34795766260D755900F239A6 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		3479576B260D78AB00F239A6 /* TabItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCell.swift; sourceTree = "<group>"; };
 		34795776260D8DAC00F239A6 /* AddTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTabViewController.swift; sourceTree = "<group>"; };
+		34E5ED0926137D8E00225179 /* TableViewForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewForm.swift; sourceTree = "<group>"; };
+		34E5ED11261380B700225179 /* TableViewFormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFormSection.swift; sourceTree = "<group>"; };
+		34E5ED1B2613865100225179 /* TableViewFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFormField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3434C57A2611549900BA96BF /* TableInputs */ = {
+		3434C57A2611549900BA96BF /* TableViewForm */ = {
 			isa = PBXGroup;
 			children = (
-				3434C57B2611554F00BA96BF /* TableInputsView.swift */,
 				3434C5892611583E00BA96BF /* TableInputCell.swift */,
+				34E5ED0926137D8E00225179 /* TableViewForm.swift */,
+				34E5ED11261380B700225179 /* TableViewFormSection.swift */,
+				34E5ED1B2613865100225179 /* TableViewFormField.swift */,
 			);
-			path = TableInputs;
+			path = TableViewForm;
 			sourceTree = "<group>";
 		};
 		34795724260D6EE900F239A6 = {
@@ -118,7 +124,7 @@
 		3479572F260D6EEA00F239A6 /* Tab Splitter */ = {
 			isa = PBXGroup;
 			children = (
-				3434C57A2611549900BA96BF /* TableInputs */,
+				3434C57A2611549900BA96BF /* TableViewForm */,
 				34795730260D6EEA00F239A6 /* AppDelegate.swift */,
 				34795732260D6EEA00F239A6 /* SceneDelegate.swift */,
 				34795734260D6EEA00F239A6 /* TabsViewController.swift */,
@@ -287,8 +293,10 @@
 				34795733260D6EEA00F239A6 /* SceneDelegate.swift in Sources */,
 				34795767260D755900F239A6 /* Tab.swift in Sources */,
 				3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */,
-				3434C57C2611554F00BA96BF /* TableInputsView.swift in Sources */,
+				34E5ED1C2613865100225179 /* TableViewFormField.swift in Sources */,
 				3434C58A2611583E00BA96BF /* TableInputCell.swift in Sources */,
+				34E5ED0A26137D8E00225179 /* TableViewForm.swift in Sources */,
+				34E5ED12261380B700225179 /* TableViewFormSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
