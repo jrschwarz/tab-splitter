@@ -7,12 +7,10 @@
 
 import UIKit
 
-class AddTabViewController: UIViewController {
+class NewTabViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
     var tableViewForm: TableViewForm!
-    
-    var activeIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +22,14 @@ class AddTabViewController: UIViewController {
                 TableViewFormInput(name: "name", placeholder: "Name")
             ]),
             
+            TableViewFormSectionStatic(name: "cost", title: nil, fields: [
+                TableViewFormInput(name: "subtotal", placeholder: "Subtotal"),
+                TableViewFormInput(name: "tax", placeholder: "Tax")
+            ]),
+            
+            TableViewFormSectionArray(name: "fees", title: nil, label: "Add fee"),
+            TableViewFormSectionArray(name: "discounts", title: nil, label: "Add discount"),
             TableViewFormSectionArray(name: "people", title: nil, label: "Add person")
         ])
-    }
-    
-    @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
     }
 }

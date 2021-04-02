@@ -18,7 +18,7 @@
 		34795753260D6EED00F239A6 /* Tab_SplitterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795752260D6EED00F239A6 /* Tab_SplitterUITests.swift */; };
 		34795767260D755900F239A6 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795766260D755900F239A6 /* Tab.swift */; };
 		3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479576B260D78AB00F239A6 /* TabItemCell.swift */; };
-		34795777260D8DAC00F239A6 /* AddTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795776260D8DAC00F239A6 /* AddTabViewController.swift */; };
+		34795777260D8DAC00F239A6 /* NewTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795776260D8DAC00F239A6 /* NewTabViewController.swift */; };
 		34E5ED0A26137D8E00225179 /* TableViewForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5ED0926137D8E00225179 /* TableViewForm.swift */; };
 		34E5ED12261380B700225179 /* TableViewFormSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5ED11261380B700225179 /* TableViewFormSection.swift */; };
 		34E5ED1C2613865100225179 /* TableViewFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E5ED1B2613865100225179 /* TableViewFormField.swift */; };
@@ -59,7 +59,7 @@
 		34795754260D6EED00F239A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34795766260D755900F239A6 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
 		3479576B260D78AB00F239A6 /* TabItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCell.swift; sourceTree = "<group>"; };
-		34795776260D8DAC00F239A6 /* AddTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTabViewController.swift; sourceTree = "<group>"; };
+		34795776260D8DAC00F239A6 /* NewTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTabViewController.swift; sourceTree = "<group>"; };
 		34E5ED0926137D8E00225179 /* TableViewForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewForm.swift; sourceTree = "<group>"; };
 		34E5ED11261380B700225179 /* TableViewFormSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFormSection.swift; sourceTree = "<group>"; };
 		34E5ED1B2613865100225179 /* TableViewFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFormField.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 				3479573E260D6EEC00F239A6 /* Info.plist */,
 				34795766260D755900F239A6 /* Tab.swift */,
 				3479576B260D78AB00F239A6 /* TabItemCell.swift */,
-				34795776260D8DAC00F239A6 /* AddTabViewController.swift */,
+				34795776260D8DAC00F239A6 /* NewTabViewController.swift */,
 			);
 			path = "Tab Splitter";
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34795777260D8DAC00F239A6 /* AddTabViewController.swift in Sources */,
+				34795777260D8DAC00F239A6 /* NewTabViewController.swift in Sources */,
 				34795735260D6EEA00F239A6 /* TabsViewController.swift in Sources */,
 				34795731260D6EEA00F239A6 /* AppDelegate.swift in Sources */,
 				34795733260D6EEA00F239A6 /* SceneDelegate.swift in Sources */,

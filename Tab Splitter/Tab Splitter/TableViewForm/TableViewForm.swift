@@ -112,20 +112,40 @@ extension TableViewForm: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete { handleCommitDelete(tableView, indexPath: indexPath) }
+        if editingStyle == .insert { handleCommitInsert(tableView, indexPath: indexPath) }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let section = sections[indexPath.section]
+        
+        if let arraySection = section as? TableViewFormSectionArray {
+            if indexPath.row == arraySection.values.count {
+                handleCommitInsert(tableView, indexPath: indexPath)
+            }
+        }
+    }
+    
+    func handleCommitInsert(_ tableView: UITableView, indexPath: IndexPath) {
         if var arraySection = sections[indexPath.section] as? TableViewFormSectionArray {
-            if editingStyle == .delete {
-                arraySection.values.remove(at: indexPath.row)
-                sections[indexPath.section] = arraySection
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
-            
-            if editingStyle == .insert {
-                arraySection.values.append("")
-                sections[indexPath.section] = arraySection
-                let newIndexPath = IndexPath(row: arraySection.values.count - 1, section: indexPath.section)
-                nextResponderIndexPath = newIndexPath
-                tableView.insertRows(at: [newIndexPath], with: .bottom)
-            }
+            arraySection.values.append("")
+            sections[indexPath.section] = arraySection
+            let newIndexPath = IndexPath(row: arraySection.values.count - 1, section: indexPath.section)
+            nextResponderIndexPath = newIndexPath
+            tableView.insertRows(at: [newIndexPath], with: .bottom)
+        }
+    }
+    
+    func handleCommitDelete(_ tableView: UITableView, indexPath: IndexPath) {
+        if var arraySection = sections[indexPath.section] as? TableViewFormSectionArray {
+            arraySection.values.remove(at: indexPath.row)
+            sections[indexPath.section] = arraySection
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
 }

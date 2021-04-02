@@ -13,7 +13,7 @@
             <objects>
                 <tableViewController id="oLQ-je-YnX" customClass="TabsViewController" customModule="Tab_Splitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="VCn-WS-b9e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -71,21 +71,21 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="Pnp-3w-wjv"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="De3-Zf-NIR">
                             <connections>
-                                <segue destination="bZw-al-lkf" kind="presentation" id="7bN-U2-L1p"/>
+                                <segue destination="bZw-al-lkf" kind="show" id="1G9-yO-mkG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA6-PY-IkA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927.536231884058" y="87.723214285714278"/>
+            <point key="canvasLocation" x="826" y="88"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rXQ-Bq-kK7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BJ5-jE-YdQ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JXb-Lr-1wK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="JXb-Lr-1wK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -98,34 +98,16 @@
             </objects>
             <point key="canvasLocation" x="105.79710144927537" y="88.392857142857139"/>
         </scene>
-        <!--Add Tab View Controller-->
+        <!--New Tab-->
         <scene sceneID="9VJ-zz-99h">
             <objects>
-                <viewController id="bZw-al-lkf" customClass="AddTabViewController" customModule="Tab_Splitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bZw-al-lkf" customClass="NewTabViewController" customModule="Tab_Splitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QTI-uI-zKV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL9-Wo-Cjd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="cancel" id="zCZ-A7-WM6">
-                                        <connections>
-                                            <action selector="cancel:" destination="bZw-al-lkf" id="ffx-dM-5yO"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8Za-C1-AKh"/>
-                                    <barButtonItem title="Create" id="ybE-x3-1aC"/>
-                                </items>
-                            </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="New Tab" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZ9-78-KxT">
-                                <rect key="frame" x="174" y="12" width="66.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="300" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="43" estimatedRowHeight="43" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Kjn-2c-Ik7">
-                                <rect key="frame" x="0.0" y="44" width="414" height="764"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableAddInputCell" textLabel="4e3-Yg-ha4" style="IBUITableViewCellStyleDefault" id="M6k-uk-RAr">
@@ -172,28 +154,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnT-d3-WYl">
+                                <rect key="frame" x="0.0" y="725" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xfm-Ha-e0r"/>
+                                    <barButtonItem title="Next" id="bna-Pd-KnZ"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1sO-Go-Zbl"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstItem="dL9-Wo-Cjd" firstAttribute="trailing" secondItem="1sO-Go-Zbl" secondAttribute="trailing" id="5mk-Dj-7XZ"/>
-                            <constraint firstItem="fZ9-78-KxT" firstAttribute="centerX" secondItem="dL9-Wo-Cjd" secondAttribute="centerX" id="65e-Vq-SH7"/>
-                            <constraint firstItem="dL9-Wo-Cjd" firstAttribute="leading" secondItem="1sO-Go-Zbl" secondAttribute="leading" id="D2N-yV-vLy"/>
-                            <constraint firstItem="fZ9-78-KxT" firstAttribute="centerY" secondItem="dL9-Wo-Cjd" secondAttribute="centerY" id="F3k-O4-K4Y"/>
-                            <constraint firstItem="1sO-Go-Zbl" firstAttribute="bottom" secondItem="Kjn-2c-Ik7" secondAttribute="bottom" id="L7t-rP-tRM"/>
+                            <constraint firstItem="DnT-d3-WYl" firstAttribute="top" secondItem="Kjn-2c-Ik7" secondAttribute="bottom" id="L7t-rP-tRM"/>
                             <constraint firstItem="1sO-Go-Zbl" firstAttribute="trailing" secondItem="Kjn-2c-Ik7" secondAttribute="trailing" id="L8o-EW-2HZ"/>
-                            <constraint firstItem="Kjn-2c-Ik7" firstAttribute="top" secondItem="dL9-Wo-Cjd" secondAttribute="bottom" id="ewd-4L-Fw9"/>
-                            <constraint firstItem="dL9-Wo-Cjd" firstAttribute="top" secondItem="1sO-Go-Zbl" secondAttribute="top" id="j5c-Pg-aJe"/>
+                            <constraint firstItem="DnT-d3-WYl" firstAttribute="leading" secondItem="1sO-Go-Zbl" secondAttribute="leading" id="OKp-oC-e74"/>
+                            <constraint firstItem="1sO-Go-Zbl" firstAttribute="bottom" secondItem="DnT-d3-WYl" secondAttribute="bottom" id="fS4-MD-0we"/>
+                            <constraint firstItem="Kjn-2c-Ik7" firstAttribute="top" secondItem="1sO-Go-Zbl" secondAttribute="top" id="gPc-Rc-9sc"/>
                             <constraint firstItem="Kjn-2c-Ik7" firstAttribute="leading" secondItem="1sO-Go-Zbl" secondAttribute="leading" id="pQz-gy-KIt"/>
+                            <constraint firstItem="DnT-d3-WYl" firstAttribute="trailing" secondItem="1sO-Go-Zbl" secondAttribute="trailing" id="qyB-cH-NhK"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="New Tab" id="fzf-Gx-TU2"/>
                     <connections>
                         <outlet property="tableView" destination="Kjn-2c-Ik7" id="r5c-zD-eUb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hM3-rm-8Dh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1798.5507246376812" y="87.723214285714278"/>
+            <point key="canvasLocation" x="1545" y="88"/>
         </scene>
     </scenes>
     <resources>
