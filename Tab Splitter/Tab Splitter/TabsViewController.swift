@@ -43,9 +43,9 @@ class TabsViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TabItemCell") as! TabItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TabCell") as! TabCell
         let tab = tabs[indexPath.row]
-        cell.title.text = tab.name
+        cell.name.text = tab.name
         cell.date.text = dateFormatter.string(from: tab.date)
         cell.total.text = currencyFormatter.string(from: tab.total as NSNumber)
         return cell

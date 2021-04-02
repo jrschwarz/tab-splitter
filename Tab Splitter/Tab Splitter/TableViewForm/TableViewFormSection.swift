@@ -5,6 +5,8 @@
 //  Created by Joseph Schwarz on 3/30/21.
 //
 
+import Foundation
+
 protocol TableViewFormSection {
     var name: String { get set }
     var title: String? { get set }

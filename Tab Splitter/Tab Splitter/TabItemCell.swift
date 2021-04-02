@@ -8,7 +8,7 @@
 import UIKit
 
 class TabItemCell: UITableViewCell {
-    @IBOutlet var title: UILabel!
-    @IBOutlet var date: UILabel!
-    @IBOutlet var total: UILabel!
+    @IBOutlet var name: UILabel!
+    @IBOutlet var people: UILabel!
+    @IBOutlet var cost: UILabel!
 }

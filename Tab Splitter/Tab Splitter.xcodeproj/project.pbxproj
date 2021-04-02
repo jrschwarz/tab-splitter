@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3434C58A2611583E00BA96BF /* TableInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434C5892611583E00BA96BF /* TableInputCell.swift */; };
+		346E71CC2616B112005FB785 /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71CB2616B112005FB785 /* TabCell.swift */; };
+		346E71D12616B34D005FB785 /* TabItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71D02616B34D005FB785 /* TabItemsViewController.swift */; };
+		346E71D62616B3FC005FB785 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71D52616B3FC005FB785 /* TabItem.swift */; };
 		34795731260D6EEA00F239A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795730260D6EEA00F239A6 /* AppDelegate.swift */; };
 		34795733260D6EEA00F239A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795732260D6EEA00F239A6 /* SceneDelegate.swift */; };
 		34795735260D6EEA00F239A6 /* TabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795734260D6EEA00F239A6 /* TabsViewController.swift */; };
@@ -43,6 +46,9 @@
 
 /* Begin PBXFileReference section */
 		3434C5892611583E00BA96BF /* TableInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInputCell.swift; sourceTree = "<group>"; };
+		346E71CB2616B112005FB785 /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
+		346E71D02616B34D005FB785 /* TabItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemsViewController.swift; sourceTree = "<group>"; };
+		346E71D52616B3FC005FB785 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		3479572D260D6EEA00F239A6 /* Tab Splitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tab Splitter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34795730260D6EEA00F239A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34795732260D6EEA00F239A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +107,15 @@
 			path = TableViewForm;
 			sourceTree = "<group>";
 		};
+		346E71DA2616B524005FB785 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34795766260D755900F239A6 /* Tab.swift */,
+				346E71D52616B3FC005FB785 /* TabItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		34795724260D6EE900F239A6 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +139,7 @@
 		3479572F260D6EEA00F239A6 /* Tab Splitter */ = {
 			isa = PBXGroup;
 			children = (
+				346E71DA2616B524005FB785 /* Models */,
 				3434C57A2611549900BA96BF /* TableViewForm */,
 				34795730260D6EEA00F239A6 /* AppDelegate.swift */,
 				34795732260D6EEA00F239A6 /* SceneDelegate.swift */,
@@ -132,9 +148,10 @@
 				34795739260D6EEC00F239A6 /* Assets.xcassets */,
 				3479573B260D6EEC00F239A6 /* LaunchScreen.storyboard */,
 				3479573E260D6EEC00F239A6 /* Info.plist */,
-				34795766260D755900F239A6 /* Tab.swift */,
 				3479576B260D78AB00F239A6 /* TabItemCell.swift */,
 				34795776260D8DAC00F239A6 /* NewTabViewController.swift */,
+				346E71CB2616B112005FB785 /* TabCell.swift */,
+				346E71D02616B34D005FB785 /* TabItemsViewController.swift */,
 			);
 			path = "Tab Splitter";
 			sourceTree = "<group>";
@@ -290,9 +307,12 @@
 				34795777260D8DAC00F239A6 /* NewTabViewController.swift in Sources */,
 				34795735260D6EEA00F239A6 /* TabsViewController.swift in Sources */,
 				34795731260D6EEA00F239A6 /* AppDelegate.swift in Sources */,
+				346E71CC2616B112005FB785 /* TabCell.swift in Sources */,
 				34795733260D6EEA00F239A6 /* SceneDelegate.swift in Sources */,
 				34795767260D755900F239A6 /* Tab.swift in Sources */,
+				346E71D62616B3FC005FB785 /* TabItem.swift in Sources */,
 				3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */,
+				346E71D12616B34D005FB785 /* TabItemsViewController.swift in Sources */,
 				34E5ED1C2613865100225179 /* TableViewFormField.swift in Sources */,
 				3434C58A2611583E00BA96BF /* TableInputCell.swift in Sources */,
 				34E5ED0A26137D8E00225179 /* TableViewForm.swift in Sources */,
