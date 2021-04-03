@@ -10,6 +10,7 @@ import UIKit
 class NewTabViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
+    
     var tableViewForm: TableViewForm!
     
     override func viewDidLoad() {
@@ -31,5 +32,9 @@ class NewTabViewController: UIViewController {
             TableViewFormSectionArray(name: "discounts", title: nil, label: "Add discount"),
             TableViewFormSectionArray(name: "people", title: nil, label: "Add person")
         ])
+    }
+    
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
     }
 }

@@ -36,3 +36,16 @@ struct TableViewFormSectionArray: TableViewFormSection {
         self.label = label
     }
 }
+
+struct TableViewFormSectionSelectable: TableViewFormSection {
+    var name: String
+    var title: String?
+    var values: [String] = []
+    var selected: [Int] = []
+    
+    init(name: String, title: String?, values: [String]) {
+        self.name = name
+        self.title = title
+        self.values = values
+    }
+}

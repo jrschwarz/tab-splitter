@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3434C58A2611583E00BA96BF /* TableInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434C5892611583E00BA96BF /* TableInputCell.swift */; };
+		345BDB9D26180980002DFE15 /* TabItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345BDB9C26180980002DFE15 /* TabItemViewController.swift */; };
 		346E71CC2616B112005FB785 /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71CB2616B112005FB785 /* TabCell.swift */; };
 		346E71D12616B34D005FB785 /* TabItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71D02616B34D005FB785 /* TabItemsViewController.swift */; };
 		346E71D62616B3FC005FB785 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71D52616B3FC005FB785 /* TabItem.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		3434C5892611583E00BA96BF /* TableInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInputCell.swift; sourceTree = "<group>"; };
+		345BDB9C26180980002DFE15 /* TabItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemViewController.swift; sourceTree = "<group>"; };
 		346E71CB2616B112005FB785 /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
 		346E71D02616B34D005FB785 /* TabItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemsViewController.swift; sourceTree = "<group>"; };
 		346E71D52616B3FC005FB785 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				34795776260D8DAC00F239A6 /* NewTabViewController.swift */,
 				346E71CB2616B112005FB785 /* TabCell.swift */,
 				346E71D02616B34D005FB785 /* TabItemsViewController.swift */,
+				345BDB9C26180980002DFE15 /* TabItemViewController.swift */,
 			);
 			path = "Tab Splitter";
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				34795777260D8DAC00F239A6 /* NewTabViewController.swift in Sources */,
 				34795735260D6EEA00F239A6 /* TabsViewController.swift in Sources */,
 				34795731260D6EEA00F239A6 /* AppDelegate.swift in Sources */,
+				345BDB9D26180980002DFE15 /* TabItemViewController.swift in Sources */,
 				346E71CC2616B112005FB785 /* TabCell.swift in Sources */,
 				34795733260D6EEA00F239A6 /* SceneDelegate.swift in Sources */,
 				34795767260D755900F239A6 /* Tab.swift in Sources */,

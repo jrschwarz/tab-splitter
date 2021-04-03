@@ -22,6 +22,7 @@ class TableViewForm: NSObject {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isEditing = true
+        tableView.allowsSelectionDuringEditing = true
     }
     
     func addSection(section: TableViewFormSection) {
@@ -71,6 +72,14 @@ extension TableViewForm: UITableViewDataSource {
             }
         }
         
+        if let selectableSection = section as? TableViewFormSectionSelectable {
+            let isSelected = selectableSection.selected.contains(indexPath.row)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableSelectableCell")!
+            cell.textLabel?.text = selectableSection.values[indexPath.row]
+            cell.accessoryType = isSelected ? .checkmark : .none
+            return cell
+        }
+        
         return UITableViewCell()
     }
     
@@ -81,6 +90,10 @@ extension TableViewForm: UITableViewDataSource {
         
         if let arraySection = sections[section] as? TableViewFormSectionArray {
             return arraySection.values.count + 1
+        }
+        
+        if let selectableSection = sections[section] as? TableViewFormSectionSelectable {
+            return selectableSection.values.count
         }
         
         return 0
@@ -129,6 +142,10 @@ extension TableViewForm: UITableViewDelegate {
                 handleCommitInsert(tableView, indexPath: indexPath)
             }
         }
+        
+        if section is TableViewFormSectionSelectable {
+            handleToggleSelection(tableView, indexPath: indexPath)
+        }
     }
     
     func handleCommitInsert(_ tableView: UITableView, indexPath: IndexPath) {
@@ -146,6 +163,18 @@ extension TableViewForm: UITableViewDelegate {
             arraySection.values.remove(at: indexPath.row)
             sections[indexPath.section] = arraySection
             tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func handleToggleSelection(_ tableView: UITableView, indexPath: IndexPath) {
+        if var selectableSection = sections[indexPath.section] as? TableViewFormSectionSelectable {
+            if selectableSection.selected.contains(indexPath.row) {
+                selectableSection.selected.removeAll { $0 == indexPath.row }
+            } else {
+                selectableSection.selected.append(indexPath.row)
+            }
+            sections[indexPath.section] = selectableSection
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 }
