@@ -11,6 +11,7 @@ class TabItemsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var tabItems: [TabItem] = []
+    var tab: Tab!
     
     var currencyFormatter: NumberFormatter = {
         let currencyFormatter = NumberFormatter()
@@ -20,18 +21,23 @@ class TabItemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        tabItems.append(contentsOf: [
-            TabItem(name: "Mac & Cheese", cost: 8.50, people: ["Joey"]),
-            TabItem(name: "Ribeye", cost: 21.99, people: ["Mykle"]),
-            TabItem(name: "Lobster Tail", cost: 22, people: ["Pratik"]),
-            TabItem(name: "Tiramasu", cost: 9.50, people: ["Joey", "Pratik"]),
-            TabItem(name: "Moscow Mule", cost: 11.50, people: ["Mykle"]),
-            TabItem(name: "Tuna Tartare", cost: 16, people: ["Mykle", "Joey", "Pratik"])
-        ])
+    }
+    
+    func updateTab() {
+        tab.items = tabItems
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "TabItemSegue":
+            let vc = segue.destination as! TabItemViewController
+            vc.tab = tab
+            vc.tabItem = TabItem()
+        default:
+            preconditionFailure("Unexpected segue")
+        }
     }
 }
 
@@ -51,5 +57,11 @@ extension TabItemsViewController: UITableViewDataSource {
 }
 
 extension TabItemsViewController: UITableViewDelegate {
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateTab()
+        let nav = navigationController
+        let vc = nav!.viewControllers[nav!.viewControllers.count - 1] as! NewTabViewController
+        vc.tab = tab
+    }
 }

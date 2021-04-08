@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3434C58A2611583E00BA96BF /* TableInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434C5892611583E00BA96BF /* TableInputCell.swift */; };
+		3434C58A2611583E00BA96BF /* TableViewFormInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3434C5892611583E00BA96BF /* TableViewFormInputCell.swift */; };
 		345BDB9D26180980002DFE15 /* TabItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345BDB9C26180980002DFE15 /* TabItemViewController.swift */; };
 		346E71CC2616B112005FB785 /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71CB2616B112005FB785 /* TabCell.swift */; };
 		346E71D12616B34D005FB785 /* TabItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346E71D02616B34D005FB785 /* TabItemsViewController.swift */; };
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3434C5892611583E00BA96BF /* TableInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInputCell.swift; sourceTree = "<group>"; };
+		3434C5892611583E00BA96BF /* TableViewFormInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFormInputCell.swift; sourceTree = "<group>"; };
 		345BDB9C26180980002DFE15 /* TabItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemViewController.swift; sourceTree = "<group>"; };
 		346E71CB2616B112005FB785 /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
 		346E71D02616B34D005FB785 /* TabItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemsViewController.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 		3434C57A2611549900BA96BF /* TableViewForm */ = {
 			isa = PBXGroup;
 			children = (
-				3434C5892611583E00BA96BF /* TableInputCell.swift */,
+				3434C5892611583E00BA96BF /* TableViewFormInputCell.swift */,
 				34E5ED0926137D8E00225179 /* TableViewForm.swift */,
 				34E5ED11261380B700225179 /* TableViewFormSection.swift */,
 				34E5ED1B2613865100225179 /* TableViewFormField.swift */,
@@ -318,7 +318,7 @@
 				3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */,
 				346E71D12616B34D005FB785 /* TabItemsViewController.swift in Sources */,
 				34E5ED1C2613865100225179 /* TableViewFormField.swift in Sources */,
-				3434C58A2611583E00BA96BF /* TableInputCell.swift in Sources */,
+				3434C58A2611583E00BA96BF /* TableViewFormInputCell.swift in Sources */,
 				34E5ED0A26137D8E00225179 /* TableViewForm.swift in Sources */,
 				34E5ED12261380B700225179 /* TableViewFormSection.swift in Sources */,
 			);

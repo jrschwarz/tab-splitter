@@ -10,9 +10,7 @@ import UIKit
 class TableViewForm: NSObject {
     
     var tableView: UITableView
-    
     private var sections: [TableViewFormSection] = []
-    
     private var nextResponderIndexPath: IndexPath?
     
     init(tableView: UITableView) {
@@ -33,6 +31,12 @@ class TableViewForm: NSObject {
         sections.forEach { addSection(section: $0) }
     }
     
+    func updateSection(name: String, section: TableViewFormSection) {
+        if let index = sections.firstIndex(where: { $0.name == name }) {
+            sections[index] = section
+        }
+    }
+    
     func removeSection(section: TableViewFormSection) {
         sections.removeAll { $0.name == section.name }
     }
@@ -51,9 +55,8 @@ extension TableViewForm: UITableViewDataSource {
             let field = staticSection.fields[row]
             
             if let inputField = field as? TableViewFormInput {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TableInputCell") as! TableInputCell
-                cell.input.placeholder = inputField.placeholder
-                cell.input.text = inputField.value
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewFormInputCell") as! TableViewFormInputCell
+                cell.configure(inputField: inputField)
                 if nextResponderIndexPath == indexPath { cell.input.becomeFirstResponder() }
                 return cell
             }
@@ -61,11 +64,11 @@ extension TableViewForm: UITableViewDataSource {
         
         if let arraySection = section as? TableViewFormSectionArray {
             if row == arraySection.values.count {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TableAddInputCell")!
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewFormArrayCell")!
                 cell.textLabel?.text = arraySection.label
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "TableInputCell") as! TableInputCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewFormInputCell") as! TableViewFormInputCell
                 cell.input.text = arraySection.values[row]
                 if nextResponderIndexPath == indexPath { cell.input.becomeFirstResponder() }
                 return cell
@@ -74,7 +77,7 @@ extension TableViewForm: UITableViewDataSource {
         
         if let selectableSection = section as? TableViewFormSectionSelectable {
             let isSelected = selectableSection.selected.contains(indexPath.row)
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TableSelectableCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewFormSelectableCell")!
             cell.textLabel?.text = selectableSection.values[indexPath.row]
             cell.accessoryType = isSelected ? .checkmark : .none
             return cell

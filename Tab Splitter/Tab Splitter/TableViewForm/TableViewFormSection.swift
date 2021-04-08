@@ -17,10 +17,14 @@ struct TableViewFormSectionStatic: TableViewFormSection {
     var title: String?
     var fields: [TableViewFormField]
     
-    init(name: String, title: String?, fields: [TableViewFormField]?) {
-        self.name = name
-        self.title = title
-        self.fields = fields ?? []
+    func getField(name: String) -> TableViewFormField? {
+        return fields.first { $0.name == name }
+    }
+    
+    mutating func updateField(name: String, field: TableViewFormField) {
+        if let index = fields.firstIndex(where: { $0.name == name }) {
+            fields[index] = field
+        }
     }
 }
 
@@ -29,12 +33,6 @@ struct TableViewFormSectionArray: TableViewFormSection {
     var title: String?
     var label: String
     var values: [String] = []
-    
-    init(name: String, title: String?, label: String) {
-        self.name = name
-        self.title = title
-        self.label = label
-    }
 }
 
 struct TableViewFormSectionSelectable: TableViewFormSection {
@@ -42,10 +40,4 @@ struct TableViewFormSectionSelectable: TableViewFormSection {
     var title: String?
     var values: [String] = []
     var selected: [Int] = []
-    
-    init(name: String, title: String?, values: [String]) {
-        self.name = name
-        self.title = title
-        self.values = values
-    }
 }

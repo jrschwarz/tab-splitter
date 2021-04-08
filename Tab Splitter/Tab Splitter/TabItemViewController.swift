@@ -10,6 +10,8 @@ import UIKit
 class TabItemViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var tableViewForm: TableViewForm!
+    var tab: Tab!
+    var tabItem: TabItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,15 +20,11 @@ class TabItemViewController: UIViewController {
         
         tableViewForm.addSections(sections: [
             TableViewFormSectionStatic(name: "item", title: nil, fields: [
-                TableViewFormInput(name: "name", placeholder: "Name"),
-                TableViewFormInput(name: "cost", placeholder: "Cost")
+                TableViewFormInput(name: "name", placeholder: "Name", value: tabItem.name),
+                TableViewFormInput(name: "cost", placeholder: "Cost", value: tabItem.cost != 0 ? String(tabItem.cost) : nil)
             ]),
             
-            TableViewFormSectionSelectable(name: "people", title: nil, values: [
-                "Joey",
-                "Mykle",
-                "Pratik"
-            ])
+            TableViewFormSectionSelectable(name: "people", title: nil, values: tabItem.people)
         ])
     }
     
