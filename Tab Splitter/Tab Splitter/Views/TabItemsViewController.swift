@@ -33,7 +33,7 @@ class TabItemsViewController: UIViewController {
         switch segue.identifier {
         case "TabItemSegue":
             let vc = segue.destination as! TabItemViewController
-            vc.tab = tab
+            vc.tab = self.tab
             vc.tabItem = TabItem()
         default:
             preconditionFailure("Unexpected segue")
@@ -61,7 +61,7 @@ extension TabItemsViewController: UITableViewDelegate {
         super.viewWillDisappear(animated)
         updateTab()
         let nav = navigationController
-        let vc = nav!.viewControllers[nav!.viewControllers.count - 1] as! NewTabViewController
+        let vc = nav!.viewControllers[nav!.viewControllers.count - 1] as! TabFormViewController
         vc.tab = tab
     }
 }
