@@ -7,11 +7,15 @@
 
 import UIKit
 
+protocol TabItemReceivable {
+    func receive(tabItem: TabItem)
+}
+
 class TabItemsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
-    var tabItems: [TabItem] = []
     var tab: Tab!
+    var delegate: TabReceivable!
     
     var currencyFormatter: NumberFormatter = {
         let currencyFormatter = NumberFormatter()
@@ -25,29 +29,40 @@ class TabItemsViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func updateTab() {
-        tab.items = tabItems
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate.receive(tab: self.tab)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "TabItemSegue":
-            let vc = segue.destination as! TabItemViewController
+            let vc = segue.destination as! TabItemFormViewController
             vc.tab = self.tab
-            vc.tabItem = TabItem()
+            vc.tabItem = TabItem(name: "Salmon", cost: 12.0)
+            vc.delegate = self
         default:
             preconditionFailure("Unexpected segue")
         }
     }
 }
 
+// MARK: TabItemReceivable
+extension TabItemsViewController: TabItemReceivable {
+    func receive(tabItem: TabItem) {
+        self.tab.items.append(tabItem)
+        self.tableView.reloadData()
+    }
+}
+
+// MARK: UITableViewDataSource
 extension TabItemsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tabItems.count
+        return self.tab.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tabItem = tabItems[indexPath.row]
+        let tabItem = self.tab.items[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "TabItemCell") as! TabItemCell
         cell.name.text = tabItem.name
         cell.people.text = tabItem.people.joined(separator: ", ")
@@ -56,12 +71,5 @@ extension TabItemsViewController: UITableViewDataSource {
     }
 }
 
-extension TabItemsViewController: UITableViewDelegate {
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        updateTab()
-        let nav = navigationController
-        let vc = nav!.viewControllers[nav!.viewControllers.count - 1] as! TabFormViewController
-        vc.tab = tab
-    }
-}
+// MARK: UITableViewDelegate
+extension TabItemsViewController: UITableViewDelegate {}

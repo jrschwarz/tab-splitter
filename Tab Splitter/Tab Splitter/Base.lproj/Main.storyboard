@@ -136,13 +136,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h1V-pc-C7b" userLabel="Input">
-                                                    <rect key="frame" x="15" y="0.0" width="399" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="h1V-pc-C7b" secondAttribute="trailing" id="19h-oR-NHI"/>
+                                                <constraint firstAttribute="trailing" secondItem="h1V-pc-C7b" secondAttribute="trailing" constant="15" id="19h-oR-NHI"/>
                                                 <constraint firstItem="h1V-pc-C7b" firstAttribute="top" secondItem="zNt-or-X3O" secondAttribute="top" id="Cqc-xQ-erT"/>
                                                 <constraint firstItem="h1V-pc-C7b" firstAttribute="centerY" secondItem="zNt-or-X3O" secondAttribute="centerY" id="SY7-bT-ZYC"/>
                                                 <constraint firstAttribute="bottom" secondItem="h1V-pc-C7b" secondAttribute="bottom" id="Ywc-Rz-BCS"/>
@@ -151,6 +151,31 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="inputField" destination="h1V-pc-C7b" id="UMJ-CD-uze"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormInputCurrencyCell" id="SNA-vp-C9B" userLabel="FormInputCurrencyCell" customClass="FormInputCurrencyCell" customModule="Tab_Splitter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="135.5" width="414" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SNA-vp-C9B" id="nHp-00-aOr">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wde-RV-Ia0" userLabel="Input">
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="wde-RV-Ia0" secondAttribute="trailing" constant="15" id="00b-1r-hc5"/>
+                                                <constraint firstItem="wde-RV-Ia0" firstAttribute="top" secondItem="nHp-00-aOr" secondAttribute="top" id="2ee-71-5Wn"/>
+                                                <constraint firstItem="wde-RV-Ia0" firstAttribute="centerY" secondItem="nHp-00-aOr" secondAttribute="centerY" id="Lnf-se-gRX"/>
+                                                <constraint firstItem="wde-RV-Ia0" firstAttribute="leading" secondItem="nHp-00-aOr" secondAttribute="leading" constant="15" id="WO2-Sj-zhe"/>
+                                                <constraint firstAttribute="bottom" secondItem="wde-RV-Ia0" secondAttribute="bottom" id="X83-8D-ray"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="inputField" destination="wde-RV-Ia0" id="DLC-jD-ofj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -268,10 +293,10 @@
             </objects>
             <point key="canvasLocation" x="1409" y="820"/>
         </scene>
-        <!--Tab Item View Controller-->
+        <!--Tab Item Form View Controller-->
         <scene sceneID="3Sz-bJ-ipD">
             <objects>
-                <viewController id="55L-x9-nvN" customClass="TabItemViewController" customModule="Tab_Splitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="55L-x9-nvN" customClass="TabItemFormViewController" customModule="Tab_Splitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osd-We-XjE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -310,7 +335,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mL9-fV-mNB">
-                                                    <rect key="frame" x="15" y="0.0" width="399" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -318,7 +343,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="mL9-fV-mNB" secondAttribute="bottom" id="0Q8-z2-MWN"/>
                                                 <constraint firstItem="mL9-fV-mNB" firstAttribute="top" secondItem="7Y8-NP-5x8" secondAttribute="top" id="4yH-Ou-Q24"/>
-                                                <constraint firstAttribute="trailing" secondItem="mL9-fV-mNB" secondAttribute="trailing" id="Bzu-2x-4jV"/>
+                                                <constraint firstAttribute="trailing" secondItem="mL9-fV-mNB" secondAttribute="trailing" constant="15" id="Bzu-2x-4jV"/>
                                                 <constraint firstItem="mL9-fV-mNB" firstAttribute="leading" secondItem="7Y8-NP-5x8" secondAttribute="leading" constant="15" id="J10-2F-dtk"/>
                                                 <constraint firstItem="mL9-fV-mNB" firstAttribute="centerY" secondItem="7Y8-NP-5x8" secondAttribute="centerY" id="czh-ZZ-zTz"/>
                                             </constraints>
@@ -343,6 +368,31 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FormInputCurrencyCell" id="0M0-OI-Zlz" userLabel="FormInputCurrencyCell" customClass="FormInputCurrencyCell" customModule="Tab_Splitter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="135.5" width="414" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0M0-OI-Zlz" id="Hwf-I8-hIf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNX-IA-aXj" userLabel="Input">
+                                                    <rect key="frame" x="15" y="0.0" width="384" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nNX-IA-aXj" firstAttribute="top" secondItem="Hwf-I8-hIf" secondAttribute="top" id="CaZ-yt-Bor"/>
+                                                <constraint firstAttribute="trailing" secondItem="nNX-IA-aXj" secondAttribute="trailing" constant="15" id="KGG-ay-Z8A"/>
+                                                <constraint firstAttribute="bottom" secondItem="nNX-IA-aXj" secondAttribute="bottom" id="S5Q-SP-FMl"/>
+                                                <constraint firstItem="nNX-IA-aXj" firstAttribute="centerY" secondItem="Hwf-I8-hIf" secondAttribute="centerY" id="cld-0r-7wZ"/>
+                                                <constraint firstItem="nNX-IA-aXj" firstAttribute="leading" secondItem="Hwf-I8-hIf" secondAttribute="leading" constant="15" id="kou-0f-pGD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="inputField" destination="nNX-IA-aXj" id="e3D-tj-jOm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

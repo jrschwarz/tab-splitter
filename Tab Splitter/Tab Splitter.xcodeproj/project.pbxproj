@@ -24,6 +24,7 @@
 		3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3479576B260D78AB00F239A6 /* TabItemCell.swift */; };
 		34795777260D8DAC00F239A6 /* TabFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34795776260D8DAC00F239A6 /* TabFormViewController.swift */; };
 		34B3E612282C119C00DB31BD /* FormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3E611282C119C00DB31BD /* FormField.swift */; };
+		34B3E615282C823500DB31BD /* FormInputCurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B3E614282C823500DB31BD /* FormInputCurrencyCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		3479576B260D78AB00F239A6 /* TabItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCell.swift; sourceTree = "<group>"; };
 		34795776260D8DAC00F239A6 /* TabFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabFormViewController.swift; sourceTree = "<group>"; };
 		34B3E611282C119C00DB31BD /* FormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormField.swift; sourceTree = "<group>"; };
+		34B3E614282C823500DB31BD /* FormInputCurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputCurrencyCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				3434C5892611583E00BA96BF /* FormInputCell.swift */,
+				34B3E614282C823500DB31BD /* FormInputCurrencyCell.swift */,
 				3479576B260D78AB00F239A6 /* TabItemCell.swift */,
 				346E71CB2616B112005FB785 /* TabCell.swift */,
 			);
@@ -329,6 +332,7 @@
 				3479576C260D78AB00F239A6 /* TabItemCell.swift in Sources */,
 				346E71D12616B34D005FB785 /* TabItemsViewController.swift in Sources */,
 				3434C58A2611583E00BA96BF /* FormInputCell.swift in Sources */,
+				34B3E615282C823500DB31BD /* FormInputCurrencyCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

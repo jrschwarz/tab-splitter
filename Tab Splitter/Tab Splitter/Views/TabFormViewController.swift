@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TabReceivable {
+    func receive(tab: Tab)
+}
+
 class TabFormViewController: UIViewController {
     
     @IBOutlet var tableView: UITableView!
@@ -33,6 +37,17 @@ class TabFormViewController: UIViewController {
             feesField,
             discountsField,
             peopleField
+        ]
+        
+        // Setup test data
+        nameField.value = "Test tab"
+        subtotalField.value = "100.0"
+        taxField.value = "10.50"
+        peopleField.values = [
+            "Joey",
+            "Justin",
+            "Mykle",
+            "Kiera"
         ]
         
         tableView.dataSource = self
@@ -69,9 +84,11 @@ class TabFormViewController: UIViewController {
             self.tab.fees = self.feesField.values.map({ Float($0) ?? 0 })
             self.tab.discounts = self.discountsField.values.map({ Float($0) ?? 0 })
             self.tab.people = self.peopleField.values
+            print("Tab: \(self.tab)")
             
             let vc = segue.destination as! TabItemsViewController
             vc.tab = self.tab
+            vc.delegate = self
         default:
             preconditionFailure("Unexpected segue")
         }
@@ -79,6 +96,22 @@ class TabFormViewController: UIViewController {
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
+    }
+    
+    func isCurrencyField(field: Field) -> Bool {
+        return [
+            self.subtotalField.name,
+            self.taxField.name,
+            self.feesField.name,
+            self.discountsField.name
+        ].contains(field.name)
+    }
+}
+
+// MARK: TabItemsReceivable
+extension TabFormViewController: TabReceivable {
+    func receive(tab: Tab) {
+        self.tab = tab
     }
 }
 
@@ -105,6 +138,12 @@ extension TabFormViewController: UITableViewDataSource {
         let field = self.fields[indexPath.section]
         
         if let singleField = field as? SingleField {
+            if isCurrencyField(field: singleField) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputCurrencyCell") as! FormInputCurrencyCell
+                cell.configure(value: singleField.value, onChange: { singleField.setValue($0) })
+                return cell
+            }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputCell") as! FormInputCell
             cell.configure(value: singleField.value, onChange: { singleField.setValue($0) })
             return cell
@@ -115,6 +154,13 @@ extension TabFormViewController: UITableViewDataSource {
             if indexPath.row == multiField.values.count {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "FormAdderCell")!
                 cell.textLabel?.text = "Add"
+                return cell
+            }
+            
+            if isCurrencyField(field: multiField) {
+                let value = multiField.values[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputCurrencyCell") as! FormInputCurrencyCell
+                cell.configure(value: value, onChange: { multiField.setValue(at: indexPath.row, $0) })
                 return cell
             }
             
@@ -175,8 +221,13 @@ extension TabFormViewController: UITableViewDelegate {
             tableView.insertRows(at: [newIndexPath], with: .bottom)
             
             // Focus input of newly inserted cell
-            let cell = tableView.cellForRow(at: newIndexPath) as! FormInputCell
-            cell.inputField.becomeFirstResponder()
+            if isCurrencyField(field: multiField) {
+                let cell = tableView.cellForRow(at: newIndexPath) as! FormInputCurrencyCell
+                cell.inputField.becomeFirstResponder()
+            } else {
+                let cell = tableView.cellForRow(at: newIndexPath) as! FormInputCell
+                cell.inputField.becomeFirstResponder()
+            }
         }
     }
     

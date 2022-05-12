@@ -56,7 +56,7 @@ final class MultiField: Field {
 final class SelectField: Field {
     var name: String
     var values: [String] = []
-    var selected: [Int] = []
+    var selected: [Int:Bool] = [:]
     
     init(name: String) {
         self.name = name
@@ -65,5 +65,13 @@ final class SelectField: Field {
     init(name: String, values: [String]) {
         self.name = name
         self.values = values
+    }
+    
+    func isSelected(_ index: Int) -> Bool {
+        return self.selected[index] ?? false
+    }
+    
+    func toggleSelected(_ index: Int) {
+        self.selected[index] = !isSelected(index)
     }
 }

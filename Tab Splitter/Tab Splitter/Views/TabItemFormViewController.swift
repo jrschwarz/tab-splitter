@@ -1,5 +1,5 @@
 //
-//  TabItemViewController.swift
+//  TabItemFormViewController.swift
 //  Tab Splitter
 //
 //  Created by Joseph Schwarz on 4/2/21.
@@ -7,21 +7,31 @@
 
 import UIKit
 
-class TabItemViewController: UIViewController {
+class TabItemFormViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var tab: Tab!
     var tabItem: TabItem!
+    var delegate: TabItemReceivable!
+    
+    // Form fields
     var fields: [Field] = []
+    var nameField = SingleField(name: "Name")
+    var costField = SingleField(name: "Cost")
+    var peopleField = SelectField(name: "People")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fields = [
-            SingleField(name: "Name", value: tabItem.name),
-            SingleField(name: "Cost", value: String(tabItem.cost)),
-            SelectField(name: "People", values: tab.people)
+            nameField,
+            costField,
+            peopleField
         ]
+        
+        // Init fields
+        peopleField.values = tab.people
+        nameField.value = tabItem.name
+        costField.value = String(tabItem.cost)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,12 +42,24 @@ class TabItemViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
+        self.tabItem.name = nameField.value
+        self.tabItem.cost = Float(costField.value) ?? 0
+        self.tabItem.people = peopleField.values
+            .enumerated()
+            .filter({ peopleField.isSelected($0.offset) })
+            .map({ $0.element })
+        
+        self.delegate.receive(tabItem: self.tabItem)
         dismiss(animated: true)
+    }
+    
+    func isCurrencyField(field: Field) -> Bool {
+        return field.name == costField.name
     }
 }
 
 // MARK: UITableViewDataSource
-extension TabItemViewController: UITableViewDataSource {
+extension TabItemFormViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.fields.count
     }
@@ -62,6 +84,12 @@ extension TabItemViewController: UITableViewDataSource {
         let field = self.fields[indexPath.section]
         
         if let singleField = field as? SingleField {
+            if isCurrencyField(field: singleField) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputCurrencyCell") as! FormInputCurrencyCell
+                cell.configure(value: singleField.value, onChange: { singleField.setValue($0) })
+                return cell
+            }
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: "FormInputCell") as! FormInputCell
             cell.configure(value: singleField.value, onChange: { singleField.setValue($0) })
             return cell
@@ -70,6 +98,7 @@ extension TabItemViewController: UITableViewDataSource {
         if let selectField = field as? SelectField {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FormSelectCell")!
             cell.textLabel?.text = selectField.values[indexPath.row]
+            cell.accessoryType = selectField.isSelected(indexPath.row) ? .checkmark : .none
             return cell
         }
         
@@ -78,4 +107,11 @@ extension TabItemViewController: UITableViewDataSource {
 }
 
 // MARK: UITableViewDelegate
-extension TabItemViewController: UITableViewDelegate { }
+extension TabItemFormViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let selectField = self.fields[indexPath.section] as? SelectField {
+            selectField.toggleSelected(indexPath.row)
+            tableView.reloadRows(at: [indexPath], with: .none)
+        }
+    }
+}
