@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FormInputCurrencyCell: UITableViewCell, UITextFieldDelegate {
+class FormInputCurrencyCell: UITableViewCell {
     
     @IBOutlet weak var inputField: UITextField!
     
@@ -18,8 +18,9 @@ class FormInputCurrencyCell: UITableViewCell, UITextFieldDelegate {
         self.onChange = onChange
         self.inputField.text = formatInitalValue(value)
         self.inputField.placeholder = "\(self.currency)0"
-        self.inputField.textAlignment = .right
         self.inputField.addTarget(self, action: #selector(handleEditingChanged), for: .editingChanged)
+        self.inputField.addTarget(self, action: #selector(handleEditingDidBegin), for: .editingDidBegin)
+        self.inputField.addTarget(self, action: #selector(handleEditingDidEnd), for: .editingDidEnd)
     }
     
     func formatInitalValue(_ value: String) -> String {
@@ -38,12 +39,25 @@ class FormInputCurrencyCell: UITableViewCell, UITextFieldDelegate {
         return "\(self.currency)\(value)"
     }
     
+    func stripCurrency(_ value: String) -> String {
+        return value.replacingOccurrences(of: self.currency, with: "")
+    }
+    
     @objc func handleEditingChanged(_ inputField: UITextField) {
         inputField.text = format(inputField.text ?? "")
-        
-        // strip currency symbol
-        var value = (inputField.text ?? "")
-        value = value.replacingOccurrences(of: self.currency, with: "")
-        self.onChange?(value)
+        self.onChange?(stripCurrency(inputField.text ?? ""))
+    }
+    
+    @objc func handleEditingDidBegin(_ inputField: UITextField) {
+        let isEmpty = inputField.text?.isEmpty ?? true
+        if !isEmpty {
+            let number = Float(stripCurrency(inputField.text!)) ?? 0
+            if number == 0 { inputField.text = "" }
+        }
+    }
+    
+    @objc func handleEditingDidEnd(_ inputField: UITextField) {
+        let isEmpty = inputField.text?.isEmpty ?? true
+        if (isEmpty) { inputField.text = format("0.00") }
     }
 }

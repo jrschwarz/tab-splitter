@@ -15,6 +15,7 @@ class TabItemsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     
     var tab: Tab!
+    var selectedIndex: Int?
     var delegate: TabReceivable!
     
     var currencyFormatter: NumberFormatter = {
@@ -35,12 +36,24 @@ class TabItemsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! TabItemFormViewController
+        vc.tab = self.tab
+        vc.delegate = self
+    
         switch segue.identifier {
-        case "TabItemSegue":
-            let vc = segue.destination as! TabItemFormViewController
-            vc.tab = self.tab
-            vc.tabItem = TabItem(name: "Salmon", cost: 12.0)
-            vc.delegate = self
+        case "TabItemSegueNew":
+            vc.tabItem = TabItem()
+            if self.selectedIndex != nil {
+                self.selectedIndex = nil
+            }
+            
+        case "TabItemSegueEdit":
+            if let index = self.selectedIndex {
+                vc.tabItem = self.tab.items[index]
+            } else {
+                vc.tabItem = TabItem()
+            }
+            
         default:
             preconditionFailure("Unexpected segue")
         }
@@ -50,7 +63,12 @@ class TabItemsViewController: UIViewController {
 // MARK: TabItemReceivable
 extension TabItemsViewController: TabItemReceivable {
     func receive(tabItem: TabItem) {
-        self.tab.items.append(tabItem)
+        if let index = self.selectedIndex {
+            self.tab.items[index] = tabItem
+        } else if !tabItem.name.isEmpty {
+            self.tab.items.append(tabItem)
+        }
+        
         self.tableView.reloadData()
     }
 }
@@ -72,4 +90,13 @@ extension TabItemsViewController: UITableViewDataSource {
 }
 
 // MARK: UITableViewDelegate
-extension TabItemsViewController: UITableViewDelegate {}
+extension TabItemsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        self.selectedIndex = indexPath.row
+        return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+}

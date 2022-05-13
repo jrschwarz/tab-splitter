@@ -160,7 +160,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wde-RV-Ia0" userLabel="Input">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wde-RV-Ia0" userLabel="Input">
                                                     <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -264,6 +264,7 @@
                                             <outlet property="cost" destination="Gqs-CD-XBL" id="ZUl-Lv-aQS"/>
                                             <outlet property="name" destination="pPF-Bp-zQL" id="jbx-OT-PPa"/>
                                             <outlet property="people" destination="0mf-41-1ag" id="x0i-O9-lwD"/>
+                                            <segue destination="55L-x9-nvN" kind="presentation" identifier="TabItemSegueEdit" id="Y4Q-XH-rsU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -281,7 +282,7 @@
                     <navigationItem key="navigationItem" title="Tab Items" id="T7d-f2-PdQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ckz-FR-UvC">
                             <connections>
-                                <segue destination="55L-x9-nvN" kind="presentation" identifier="TabItemSegue" id="JB2-to-sqd"/>
+                                <segue destination="55L-x9-nvN" kind="presentation" identifier="TabItemSegueNew" id="JB2-to-sqd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -376,7 +377,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNX-IA-aXj" userLabel="Input">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nNX-IA-aXj" userLabel="Input">
                                                     <rect key="frame" x="15" y="0.0" width="384" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -438,6 +439,9 @@
             <point key="canvasLocation" x="-117" y="820"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y4Q-XH-rsU"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

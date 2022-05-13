@@ -29,9 +29,17 @@ class TabItemFormViewController: UIViewController {
         ]
         
         // Init fields
-        peopleField.values = tab.people
         nameField.value = tabItem.name
         costField.value = String(tabItem.cost)
+        peopleField.values = tab.people
+        peopleField.selected = Dictionary(
+            uniqueKeysWithValues:
+                tab.people
+                .enumerated()
+                .map({ (index, element) in
+                    return (index, tabItem.people.contains(element))
+                })
+        )
         
         tableView.delegate = self
         tableView.dataSource = self
